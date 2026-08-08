@@ -2,15 +2,28 @@
 
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
-import { Globe, Menu, X } from 'lucide-react'
+import { createPortal } from 'react-dom'
+import { ChevronDown, Globe, Menu, X } from 'lucide-react'
 import { NAV_ITEMS } from '@/lib/site-nav'
 import { cn } from '@/lib/utils'
+
+// Placeholder language list — wiring comes in step 4 (trilingual + RTL).
+const LANGUAGES = [
+  { code: 'fr', label: 'Français' },
+  { code: 'ar', label: 'العربية' },
+  { code: 'en', label: 'English' },
+] as const
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
   const [activeId, setActiveId] = useState<string>(NAV_ITEMS[0]?.id ?? '')
   const [logoRevealed, setLogoRevealed] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  // Portals need the DOM; only render the drawer after mount.
+  useEffect(() => setMounted(true), [])
 
   // Reveal the header logo once the splash animation has flown into place.
   useEffect(() => {
@@ -64,6 +77,21 @@ export function SiteHeader() {
       document.body.style.overflow = ''
     }
   }, [mobileOpen])
+
+  // Close the desktop language menu on outside click / Escape.
+  useEffect(() => {
+    if (!langOpen) return
+    const onClick = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest('[data-lang-menu]')) setLangOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setLangOpen(false)
+    document.addEventListener('mousedown', onClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [langOpen])
 
   const handleNavClick = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -157,13 +185,50 @@ export function SiteHeader() {
 
         {/* Right controls */}
         <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-accent hover:text-brand-dark"
-            aria-label="Changer de langue"
-          >
-            <Globe className="size-5" />
-          </button>
+          {/* Language selector (desktop) — names shown explicitly */}
+          <div className="relative hidden lg:block" data-lang-menu>
+            <button
+              type="button"
+              onClick={() => setLangOpen((v) => !v)}
+              className={cn(
+                'inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors',
+                langOpen
+                  ? 'bg-accent text-brand-dark'
+                  : 'text-foreground/70 hover:bg-accent hover:text-brand-dark',
+              )}
+              aria-label="Changer de langue"
+              aria-haspopup="menu"
+              aria-expanded={langOpen}
+            >
+              <Globe className="size-5" />
+              <span>Français</span>
+              <ChevronDown
+                className={cn('size-4 transition-transform', langOpen && 'rotate-180')}
+              />
+            </button>
+            <div
+              role="menu"
+              className={cn(
+                'absolute right-0 top-full mt-2 w-44 overflow-hidden rounded-xl border border-border bg-background shadow-lg transition-all duration-200',
+                langOpen
+                  ? 'pointer-events-auto translate-y-0 opacity-100'
+                  : 'pointer-events-none -translate-y-1 opacity-0',
+              )}
+            >
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  type="button"
+                  role="menuitem"
+                  onClick={() => setLangOpen(false)}
+                  dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
+                  className="flex w-full items-center justify-between px-4 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-brand-dark"
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
+          </div>
 
           <button
             type="button"
@@ -177,28 +242,33 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile drawer */}
-      <div
-        className={cn(
-          'fixed inset-0 z-50 lg:hidden',
-          mobileOpen ? 'pointer-events-auto' : 'pointer-events-none',
-        )}
-        aria-hidden={!mobileOpen}
-      >
+      {/* Mobile drawer — rendered in a portal on <body> so it escapes the
+          header's backdrop-filter stacking context (which was letting page
+          content show through the panel). */}
+      {mounted &&
+        createPortal(
+          <div
+            className={cn(
+              'fixed inset-0 z-[60] lg:hidden',
+              mobileOpen ? 'pointer-events-auto' : 'pointer-events-none',
+            )}
+            aria-hidden={!mobileOpen}
+          >
         {/* Backdrop */}
         <div
           onClick={() => setMobileOpen(false)}
           className={cn(
-            'absolute inset-0 bg-brand-dark/30 backdrop-blur-sm transition-opacity duration-300',
+            'absolute inset-0 bg-brand-dark/60 backdrop-blur-md transition-opacity duration-300',
             mobileOpen ? 'opacity-100' : 'opacity-0',
           )}
         />
-        {/* Panel */}
+        {/* Panel — fully opaque so page content underneath stays hidden */}
         <div
           className={cn(
             'absolute right-0 top-0 flex h-full w-[82%] max-w-sm flex-col bg-background shadow-2xl transition-transform duration-300 ease-out',
             mobileOpen ? 'translate-x-0' : 'translate-x-full',
           )}
+          style={{ backgroundColor: 'var(--background)' }}
           role="dialog"
           aria-modal="true"
           aria-label="Menu de navigation"
@@ -243,17 +313,28 @@ export function SiteHeader() {
           </nav>
 
           <div className="mt-auto border-t border-border p-4">
-            <button
-              type="button"
-              className="flex w-full items-center justify-center gap-2 rounded-lg border border-border px-4 py-3 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-brand-dark"
-              aria-label="Changer de langue"
-            >
+            <div className="mb-2 flex items-center gap-2 px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               <Globe className="size-4" />
-              Langue / اللغة / Language
-            </button>
+              <span>Langue</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  type="button"
+                  onClick={() => setMobileOpen(false)}
+                  dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
+                  className="rounded-lg border border-border px-2 py-2.5 text-center text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-brand-dark"
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+          </div>
+          </div>,
+          document.body,
+        )}
     </header>
   )
 }
