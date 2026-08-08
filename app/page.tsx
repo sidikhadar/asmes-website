@@ -1,10 +1,12 @@
 import { SiteHeader } from '@/components/site-header'
+import { SplashScreen } from '@/components/splash-screen'
 import { Hero } from '@/components/sections/hero'
 import { SectionPlaceholder } from '@/components/sections/section-placeholder'
 
 export default function Page() {
   return (
     <>
+      <SplashScreen />
       <SiteHeader />
       <main>
         <Hero />

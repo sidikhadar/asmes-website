@@ -10,6 +10,23 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeId, setActiveId] = useState<string>(NAV_ITEMS[0]?.id ?? '')
+  const [logoRevealed, setLogoRevealed] = useState(false)
+
+  // Reveal the header logo once the splash animation has flown into place.
+  useEffect(() => {
+    if (document.documentElement.getAttribute('data-splash') === 'done') {
+      setLogoRevealed(true)
+      return
+    }
+    const onDone = () => setLogoRevealed(true)
+    window.addEventListener('asmes:splash-done', onDone)
+    // Safety net in case the splash never fires (e.g. asset error).
+    const fallback = setTimeout(() => setLogoRevealed(true), 4000)
+    return () => {
+      window.removeEventListener('asmes:splash-done', onDone)
+      clearTimeout(fallback)
+    }
+  }, [])
 
   // Compact / add elevation once the user scrolls past the hero fold.
   useEffect(() => {
@@ -83,9 +100,11 @@ export function SiteHeader() {
           aria-label="ASMES — retour à l'accueil"
         >
           <span
+            id="header-logo-anchor"
             className={cn(
-              'relative overflow-hidden rounded-full ring-1 ring-border transition-all duration-300',
+              'relative overflow-hidden rounded-full ring-1 ring-border transition-[width,height,opacity] duration-300',
               scrolled ? 'size-10' : 'size-12',
+              logoRevealed ? 'opacity-100' : 'opacity-0',
             )}
           >
             <Image
