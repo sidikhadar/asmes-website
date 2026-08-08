@@ -74,17 +74,19 @@ export function SiteHeader() {
     }
   }, [mobileOpen])
 
-  // Close the desktop language menu on outside click / Escape.
+  // Close the language menu on outside interaction / Escape.
+  // Uses pointerdown so it fires reliably for both mouse and touch (mousedown
+  // is unreliable on mobile and could leave the menu unresponsive to taps).
   useEffect(() => {
     if (!langOpen) return
-    const onClick = (e: MouseEvent) => {
+    const onPointer = (e: Event) => {
       if (!(e.target as HTMLElement).closest('[data-lang-menu]')) setLangOpen(false)
     }
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setLangOpen(false)
-    document.addEventListener('mousedown', onClick)
+    document.addEventListener('pointerdown', onPointer)
     document.addEventListener('keydown', onKey)
     return () => {
-      document.removeEventListener('mousedown', onClick)
+      document.removeEventListener('pointerdown', onPointer)
       document.removeEventListener('keydown', onKey)
     }
   }, [langOpen])
@@ -181,13 +183,14 @@ export function SiteHeader() {
 
         {/* Right controls */}
         <div className="flex items-center gap-1.5">
-          {/* Language selector (desktop) — names shown explicitly */}
-          <div className="relative hidden lg:block" data-lang-menu>
+          {/* Language selector — available on every screen size so visitors
+              can switch language straight from the header, phone included */}
+          <div className="relative" data-lang-menu>
             <button
               type="button"
               onClick={() => setLangOpen((v) => !v)}
               className={cn(
-                'inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors',
+                'inline-flex h-11 items-center gap-1.5 rounded-full px-2.5 text-sm font-medium transition-colors sm:gap-2 sm:px-3',
                 langOpen
                   ? 'bg-accent text-brand-dark'
                   : 'text-foreground/70 hover:bg-accent hover:text-brand-dark',
@@ -197,7 +200,7 @@ export function SiteHeader() {
               aria-expanded={langOpen}
             >
               <Globe className="size-5" />
-              <span>{LANGUAGE_LABELS[locale]}</span>
+              <span className="hidden sm:inline">{LANGUAGE_LABELS[locale]}</span>
               <ChevronDown
                 className={cn('size-4 transition-transform', langOpen && 'rotate-180')}
               />
