@@ -6,7 +6,9 @@ import { Mission } from '@/components/sections/mission'
 import { Vision } from '@/components/sections/vision'
 import { Objectives } from '@/components/sections/objectives'
 import { Sdg } from '@/components/sections/sdg'
-import { SectionPlaceholder } from '@/components/sections/section-placeholder'
+import { Partners } from '@/components/sections/partners'
+import { Contact } from '@/components/sections/contact'
+import { SiteFooter } from '@/components/site-footer'
 
 export default function Page() {
   return (
@@ -21,9 +23,10 @@ export default function Page() {
         <Vision />
         <Objectives />
         <Sdg />
-        <SectionPlaceholder id="partenaires" />
-        <SectionPlaceholder id="contact" tinted />
+        <Partners />
+        <Contact />
       </main>
+      <SiteFooter />
     </>
   )
 }

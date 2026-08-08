@@ -69,9 +69,19 @@ export type Dictionary = {
       conclusion: string
       goals: string[]
     }
-    partenaires: { eyebrow: string; title: string }
-    contact: { eyebrow: string; title: string }
+    partenaires: { eyebrow: string; title: string; intro: string }
+    contact: {
+      eyebrow: string
+      title: string
+      intro: string
+      addressLabel: string
+      address: string
+      emailLabel: string
+      facebookLabel: string
+      facebookvalue: string
+    }
   }
+  footer: { rights: string; developedBy: string; followUs: string }
   common: { comingSoon: string; sdgLabel: string }
   a11y: {
     home: string
@@ -219,8 +229,29 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'Partenariats pour la réalisation des objectifs',
         ],
       },
-      partenaires: { eyebrow: 'Ils nous soutiennent', title: 'Nos partenaires' },
-      contact: { eyebrow: 'Restons en lien', title: 'Contact' },
+      partenaires: {
+        eyebrow: 'Ils nous soutiennent',
+        title: 'Nos partenaires',
+        intro:
+          "L'ASMES agit aux côtés de partenaires nationaux et internationaux qui partagent son engagement pour un développement durable, inclusif et solidaire.",
+      },
+      contact: {
+        eyebrow: 'Restons en lien',
+        title: 'Contact',
+        intro:
+          "Une question, un projet ou une envie de collaborer ? N'hésitez pas à nous contacter.",
+        addressLabel: 'Adresse',
+        address:
+          'Rue Cheikhna Mohamed Laghdaf N°085, Ilot K, Tevragh-Zeina, Nouakchott',
+        emailLabel: 'Email',
+        facebookLabel: 'Facebook',
+        facebookvalue: 'facebook.com/ongasmerim',
+      },
+    },
+    footer: {
+      rights: 'Tous droits réservés.',
+      developedBy: 'Site développé par HYBRIDS TECH',
+      followUs: 'Suivez-nous',
     },
     common: { comingSoon: 'Contenu à venir dans la prochaine étape.', sdgLabel: 'ODD' },
     a11y: {
@@ -367,8 +398,28 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'عقد الشراكات لتحقيق الأهداف',
         ],
       },
-      partenaires: { eyebrow: 'يدعموننا', title: 'شركاؤنا' },
-      contact: { eyebrow: 'لنبقَ على تواصل', title: 'اتصل بنا' },
+      partenaires: {
+        eyebrow: 'يدعموننا',
+        title: 'شركاؤنا',
+        intro:
+          'تعمل جمعية ASMES إلى جانب شركاء وطنيين ودوليين يشاركونها التزامها بتنمية مستدامة وشاملة وتضامنية.',
+      },
+      contact: {
+        eyebrow: 'لنبقَ على تواصل',
+        title: 'اتصل بنا',
+        intro: 'لديك سؤال أو مشروع أو رغبة في التعاون؟ لا تتردد في التواصل معنا.',
+        addressLabel: 'العنوان',
+        address:
+          'شارع الشيخنا محمد لغظف رقم 085، الحي K، تفرغ زينة، نواكشوط',
+        emailLabel: 'البريد الإلكتروني',
+        facebookLabel: 'فيسبوك',
+        facebookvalue: 'facebook.com/ongasmerim',
+      },
+    },
+    footer: {
+      rights: 'جميع الحقوق محفوظة.',
+      developedBy: 'الموقع من تطوير HYBRIDS TECH',
+      followUs: 'تابعونا',
     },
     common: { comingSoon: 'سيُضاف المحتوى في الخطوة القادمة.', sdgLabel: 'هدف' },
     a11y: {
@@ -515,8 +566,29 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'Partnerships for the goals',
         ],
       },
-      partenaires: { eyebrow: 'They support us', title: 'Our partners' },
-      contact: { eyebrow: 'Stay in touch', title: 'Contact' },
+      partenaires: {
+        eyebrow: 'They support us',
+        title: 'Our partners',
+        intro:
+          'ASMES works alongside national and international partners who share its commitment to sustainable, inclusive and solidarity-driven development.',
+      },
+      contact: {
+        eyebrow: 'Stay in touch',
+        title: 'Contact',
+        intro:
+          'A question, a project or a wish to collaborate? Feel free to reach out to us.',
+        addressLabel: 'Address',
+        address:
+          'Rue Cheikhna Mohamed Laghdaf N°085, Ilot K, Tevragh-Zeina, Nouakchott',
+        emailLabel: 'Email',
+        facebookLabel: 'Facebook',
+        facebookvalue: 'facebook.com/ongasmerim',
+      },
+    },
+    footer: {
+      rights: 'All rights reserved.',
+      developedBy: 'Website developed by HYBRIDS TECH',
+      followUs: 'Follow us',
     },
     common: { comingSoon: 'Content coming in the next step.', sdgLabel: 'SDG' },
     a11y: {
