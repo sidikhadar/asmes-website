@@ -7,7 +7,7 @@
  * section components fully data-driven.
  */
 
-export const LOCALES = ['fr', 'ar', 'en'] as const
+export const LOCALES = ['fr', 'en', 'ar'] as const
 export type Locale = (typeof LOCALES)[number]
 
 export const DEFAULT_LOCALE: Locale = 'fr'

@@ -142,11 +142,11 @@ export function SiteHeader() {
               priority
             />
           </span>
-          <span className="hidden flex-col leading-tight sm:flex">
-            <span className="font-heading text-lg font-extrabold tracking-tight text-brand-dark">
+          <span className="flex flex-col leading-tight">
+            <span className="font-heading text-base font-extrabold tracking-tight text-brand-dark sm:text-lg">
               ASMES
             </span>
-            <span className="text-[11px] font-medium text-muted-foreground">
+            <span className="text-[10px] font-medium text-muted-foreground sm:text-[11px]">
               {t.brand.tagline}
             </span>
           </span>
