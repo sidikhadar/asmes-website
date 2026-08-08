@@ -11,39 +11,12 @@ export default function Page() {
       <main>
         <Hero />
 
-        <SectionPlaceholder
-          id="qui-sommes-nous"
-          eyebrow="À propos"
-          title="Qui sommes-nous"
-        />
-        <SectionPlaceholder
-          id="mission"
-          eyebrow="Notre engagement"
-          title="Notre mission"
-          tinted
-        />
-        <SectionPlaceholder
-          id="vision"
-          eyebrow="Notre horizon"
-          title="Notre vision"
-        />
-        <SectionPlaceholder
-          id="objectifs"
-          eyebrow="Nos priorités"
-          title="Nos objectifs"
-          tinted
-        />
-        <SectionPlaceholder
-          id="partenaires"
-          eyebrow="Ils nous soutiennent"
-          title="Nos partenaires"
-        />
-        <SectionPlaceholder
-          id="contact"
-          eyebrow="Restons en lien"
-          title="Contact"
-          tinted
-        />
+        <SectionPlaceholder id="qui-sommes-nous" />
+        <SectionPlaceholder id="mission" tinted />
+        <SectionPlaceholder id="vision" />
+        <SectionPlaceholder id="objectifs" tinted />
+        <SectionPlaceholder id="partenaires" />
+        <SectionPlaceholder id="contact" tinted />
       </main>
     </>
   )

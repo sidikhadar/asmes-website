@@ -5,16 +5,12 @@ import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { ChevronDown, Globe, Menu, X } from 'lucide-react'
 import { NAV_ITEMS } from '@/lib/site-nav'
+import { useLanguage } from '@/components/language-provider'
+import { LANGUAGE_LABELS, LOCALES } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
-// Placeholder language list — wiring comes in step 4 (trilingual + RTL).
-const LANGUAGES = [
-  { code: 'fr', label: 'Français' },
-  { code: 'ar', label: 'العربية' },
-  { code: 'en', label: 'English' },
-] as const
-
 export function SiteHeader() {
+  const { t, locale, setLocale } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
@@ -125,7 +121,7 @@ export function SiteHeader() {
             'flex shrink-0 items-center gap-3 transition-all duration-300',
             scrolled ? 'py-2.5' : 'py-3.5',
           )}
-          aria-label="ASMES — retour à l'accueil"
+          aria-label={t.a11y.home}
         >
           <span
             id="header-logo-anchor"
@@ -149,13 +145,13 @@ export function SiteHeader() {
               ASMES
             </span>
             <span className="text-[11px] font-medium text-muted-foreground">
-              Milieu Environnemental &amp; Social
+              {t.brand.tagline}
             </span>
           </span>
         </a>
 
         {/* Desktop navigation */}
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label={t.a11y.menu}>
           {NAV_ITEMS.map((item) => {
             const isActive = activeId === item.id
             return (
@@ -171,7 +167,7 @@ export function SiteHeader() {
                     : 'text-foreground/70 hover:text-brand-dark',
                 )}
               >
-                {item.label}
+                {t.nav[item.id as keyof typeof t.nav]}
                 <span
                   className={cn(
                     'absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full bg-brand transition-transform duration-300',
@@ -196,12 +192,12 @@ export function SiteHeader() {
                   ? 'bg-accent text-brand-dark'
                   : 'text-foreground/70 hover:bg-accent hover:text-brand-dark',
               )}
-              aria-label="Changer de langue"
+              aria-label={t.a11y.changeLanguage}
               aria-haspopup="menu"
               aria-expanded={langOpen}
             >
               <Globe className="size-5" />
-              <span>Français</span>
+              <span>{LANGUAGE_LABELS[locale]}</span>
               <ChevronDown
                 className={cn('size-4 transition-transform', langOpen && 'rotate-180')}
               />
@@ -209,24 +205,36 @@ export function SiteHeader() {
             <div
               role="menu"
               className={cn(
-                'absolute right-0 top-full mt-2 w-44 overflow-hidden rounded-xl border border-border bg-background shadow-lg transition-all duration-200',
+                'absolute end-0 top-full mt-2 w-44 overflow-hidden rounded-xl border border-border bg-background shadow-lg transition-all duration-200',
                 langOpen
                   ? 'pointer-events-auto translate-y-0 opacity-100'
                   : 'pointer-events-none -translate-y-1 opacity-0',
               )}
             >
-              {LANGUAGES.map((lang) => (
-                <button
-                  key={lang.code}
-                  type="button"
-                  role="menuitem"
-                  onClick={() => setLangOpen(false)}
-                  dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
-                  className="flex w-full items-center justify-between px-4 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-brand-dark"
-                >
-                  {lang.label}
-                </button>
-              ))}
+              {LOCALES.map((code) => {
+                const isCurrent = code === locale
+                return (
+                  <button
+                    key={code}
+                    type="button"
+                    role="menuitem"
+                    onClick={() => {
+                      setLocale(code)
+                      setLangOpen(false)
+                    }}
+                    dir={code === 'ar' ? 'rtl' : 'ltr'}
+                    className={cn(
+                      'flex w-full items-center justify-between px-4 py-2.5 text-sm font-medium transition-colors',
+                      isCurrent
+                        ? 'bg-accent text-brand-dark'
+                        : 'text-foreground/80 hover:bg-accent hover:text-brand-dark',
+                    )}
+                  >
+                    {LANGUAGE_LABELS[code]}
+                    {isCurrent && <span className="size-1.5 rounded-full bg-brand" />}
+                  </button>
+                )
+              })}
             </div>
           </div>
 
@@ -234,7 +242,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => setMobileOpen(true)}
             className="inline-flex size-11 items-center justify-center rounded-full text-foreground/80 transition-colors hover:bg-accent hover:text-brand-dark lg:hidden"
-            aria-label="Ouvrir le menu"
+            aria-label={t.a11y.openMenu}
             aria-expanded={mobileOpen}
           >
             <Menu className="size-6" />
@@ -271,7 +279,7 @@ export function SiteHeader() {
           style={{ backgroundColor: 'var(--background)' }}
           role="dialog"
           aria-modal="true"
-          aria-label="Menu de navigation"
+          aria-label={t.a11y.menu}
         >
           <div className="flex items-center justify-between border-b border-border px-5 py-4">
             <div className="flex items-center gap-2.5">
@@ -284,13 +292,13 @@ export function SiteHeader() {
               type="button"
               onClick={() => setMobileOpen(false)}
               className="inline-flex size-11 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-accent hover:text-brand-dark"
-              aria-label="Fermer le menu"
+              aria-label={t.a11y.closeMenu}
             >
               <X className="size-6" />
             </button>
           </div>
 
-          <nav className="flex flex-col gap-1 p-4" aria-label="Navigation mobile">
+          <nav className="flex flex-col gap-1 p-4" aria-label={t.a11y.menu}>
             {NAV_ITEMS.map((item) => {
               const isActive = activeId === item.id
               return (
@@ -306,7 +314,7 @@ export function SiteHeader() {
                       : 'text-foreground/80 hover:bg-accent hover:text-brand-dark',
                   )}
                 >
-                  {item.label}
+                  {t.nav[item.id as keyof typeof t.nav]}
                 </a>
               )
             })}
@@ -315,20 +323,32 @@ export function SiteHeader() {
           <div className="mt-auto border-t border-border p-4">
             <div className="mb-2 flex items-center gap-2 px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               <Globe className="size-4" />
-              <span>Langue</span>
+              <span>{t.a11y.language}</span>
             </div>
             <div className="grid grid-cols-3 gap-2">
-              {LANGUAGES.map((lang) => (
-                <button
-                  key={lang.code}
-                  type="button"
-                  onClick={() => setMobileOpen(false)}
-                  dir={lang.code === 'ar' ? 'rtl' : 'ltr'}
-                  className="rounded-lg border border-border px-2 py-2.5 text-center text-sm font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-brand-dark"
-                >
-                  {lang.label}
-                </button>
-              ))}
+              {LOCALES.map((code) => {
+                const isCurrent = code === locale
+                return (
+                  <button
+                    key={code}
+                    type="button"
+                    onClick={() => {
+                      setLocale(code)
+                      setMobileOpen(false)
+                    }}
+                    dir={code === 'ar' ? 'rtl' : 'ltr'}
+                    aria-pressed={isCurrent}
+                    className={cn(
+                      'rounded-lg border px-2 py-2.5 text-center text-sm font-medium transition-colors',
+                      isCurrent
+                        ? 'border-brand bg-accent text-brand-dark'
+                        : 'border-border text-foreground/80 hover:bg-accent hover:text-brand-dark',
+                    )}
+                  >
+                    {LANGUAGE_LABELS[code]}
+                  </button>
+                )
+              })}
             </div>
           </div>
           </div>

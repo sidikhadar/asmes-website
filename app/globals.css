@@ -116,6 +116,17 @@
   }
 }
 
+/* When the document switches to Arabic (RTL), use the Arabic typeface across
+   body and headings for correct shaping and rhythm.
+   NOTE: kept unlayered (outside @layer) on purpose — Tailwind's font utilities
+   live in the utilities layer, which outranks @layer base; only an unlayered
+   rule reliably wins over them. */
+html[dir='rtl'] body,
+html[dir='rtl'] .font-sans,
+html[dir='rtl'] .font-heading {
+  font-family: var(--font-arabic), var(--font-inter), system-ui, sans-serif;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import { useLanguage } from '@/components/language-provider'
 
 function scrollToId(id: string) {
   const target = document.getElementById(id)
@@ -12,6 +13,7 @@ function scrollToId(id: string) {
 }
 
 export function Hero() {
+  const { t } = useLanguage()
   return (
     <section
       id="accueil"
@@ -40,19 +42,18 @@ export function Hero() {
 
         <span className="animate-in fade-in slide-in-from-bottom-4 delay-100 duration-700 inline-flex items-center gap-2 rounded-full border border-brand/25 bg-background/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-dark backdrop-blur">
           <span className="size-1.5 rounded-full bg-clay" />
-          ONG mauritanienne
+          {t.hero.badge}
         </span>
 
         <h1 className="animate-in fade-in slide-in-from-bottom-4 delay-150 duration-700 mt-6 text-balance font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          Association de Sauvetage du{' '}
+          {t.hero.titleLead}{' '}
           <span className="bg-gradient-to-r from-brand to-brand-dark bg-clip-text text-transparent">
-            Milieu Environnemental et Social
+            {t.hero.titleHighlight}
           </span>
         </h1>
 
         <p className="animate-in fade-in slide-in-from-bottom-4 delay-200 duration-700 mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Agir pour la sauvegarde de l&apos;environnement et le développement social,
-          au service des communautés mauritaniennes et des générations futures.
+          {t.hero.subtitle}
         </p>
 
         <div className="animate-in fade-in slide-in-from-bottom-4 delay-300 duration-700 mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -61,15 +62,15 @@ export function Hero() {
             onClick={() => scrollToId('contact')}
             className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-dark px-7 text-sm font-semibold text-brand-foreground shadow-lg shadow-brand/25 transition-all hover:shadow-xl hover:shadow-brand/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:w-auto"
           >
-            Nous contacter
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+            {t.hero.ctaContact}
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
           </button>
           <button
             type="button"
             onClick={() => scrollToId('qui-sommes-nous')}
             className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-background/70 px-7 text-sm font-semibold text-foreground/80 backdrop-blur transition-colors hover:border-brand/40 hover:text-brand-dark sm:w-auto"
           >
-            Découvrir l&apos;association
+            {t.hero.ctaDiscover}
           </button>
         </div>
       </div>
@@ -78,7 +79,7 @@ export function Hero() {
       <button
         type="button"
         onClick={() => scrollToId('qui-sommes-nous')}
-        aria-label="Faire défiler vers le bas"
+        aria-label={t.hero.scroll}
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted-foreground transition-colors hover:text-brand-dark motion-safe:animate-bounce sm:block"
       >
         <ChevronDown className="size-6" />

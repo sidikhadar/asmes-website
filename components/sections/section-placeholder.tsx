@@ -1,18 +1,26 @@
+'use client'
+
+import { useLanguage } from '@/components/language-provider'
+import type { Dictionary } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
+type SectionId = keyof Dictionary['sections']
+
 type SectionPlaceholderProps = {
-  id: string
-  eyebrow: string
-  title: string
+  id: SectionId
   /** Alternate the background to create visual rhythm between sections. */
   tinted?: boolean
 }
 
 /**
  * Temporary scaffold for a content section.
- * Renders only the anchor id + heading; real content is added in later steps.
+ * Eyebrow + title are pulled from the active locale's dictionary so the
+ * section stays fully translated; real content is added in later steps.
  */
-export function SectionPlaceholder({ id, eyebrow, title, tinted }: SectionPlaceholderProps) {
+export function SectionPlaceholder({ id, tinted }: SectionPlaceholderProps) {
+  const { t } = useLanguage()
+  const { eyebrow, title } = t.sections[id]
+
   return (
     <section
       id={id}
@@ -29,9 +37,7 @@ export function SectionPlaceholder({ id, eyebrow, title, tinted }: SectionPlaceh
         <h2 className="mt-4 max-w-3xl text-balance font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           {title}
         </h2>
-        <p className="mt-6 max-w-xl text-sm text-muted-foreground">
-          Contenu à venir dans la prochaine étape.
-        </p>
+        <p className="mt-6 max-w-xl text-sm text-muted-foreground">{t.common.comingSoon}</p>
       </div>
     </section>
   )

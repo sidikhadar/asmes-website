@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Inter, Manrope } from 'next/font/google'
+import { Inter, Manrope, Cairo } from 'next/font/google'
+import { LanguageProvider } from '@/components/language-provider'
 import './globals.css'
 
 const inter = Inter({
@@ -12,6 +13,13 @@ const inter = Inter({
 const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-heading-family',
+  display: 'swap',
+})
+
+// Arabic typeface used automatically when the document switches to RTL.
+const cairo = Cairo({
+  subsets: ['arabic', 'latin'],
+  variable: '--font-arabic',
   display: 'swap',
 })
 
@@ -35,9 +43,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={`${inter.variable} ${manrope.variable} bg-background`}>
+    <html
+      lang="fr"
+      className={`${inter.variable} ${manrope.variable} ${cairo.variable} bg-background`}
+    >
       <body className="font-sans antialiased">
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

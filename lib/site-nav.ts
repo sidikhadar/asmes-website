@@ -1,24 +1,31 @@
 /**
  * Centralised navigation model.
  *
- * Labels are kept here (rather than hard-coded in the JSX) so that the
- * trilingual system introduced in a later step can swap them per locale
- * without touching the header or section components.
+ * Only the anchor ids live here — the visible labels come from the
+ * trilingual dictionary (`lib/i18n.ts`) keyed by these same ids, so the
+ * header and sections stay fully translated from a single source of truth.
  */
+
+export type NavId =
+  | 'accueil'
+  | 'qui-sommes-nous'
+  | 'mission'
+  | 'vision'
+  | 'objectifs'
+  | 'partenaires'
+  | 'contact'
 
 export type NavItem = {
   /** Anchor target id used on the corresponding <section>. */
-  id: string
-  /** Current (French) label. */
-  label: string
+  id: NavId
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'accueil', label: 'Accueil' },
-  { id: 'qui-sommes-nous', label: 'Qui sommes-nous' },
-  { id: 'mission', label: 'Notre mission' },
-  { id: 'vision', label: 'Notre vision' },
-  { id: 'objectifs', label: 'Nos objectifs' },
-  { id: 'partenaires', label: 'Nos partenaires' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'accueil' },
+  { id: 'qui-sommes-nous' },
+  { id: 'mission' },
+  { id: 'vision' },
+  { id: 'objectifs' },
+  { id: 'partenaires' },
+  { id: 'contact' },
 ]
