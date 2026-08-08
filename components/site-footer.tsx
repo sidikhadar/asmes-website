@@ -56,7 +56,10 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 py-5 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between sm:px-6 sm:text-start">
           <p>© 2026 ASMES. {t.footer.rights}</p>
-          <p className="font-medium">{t.footer.developedBy}</p>
+          <div className="flex flex-col gap-0.5 sm:items-end">
+            <p className="font-medium">{t.footer.developedBy}</p>
+            <p className="text-brand-dark">Sidi Mohamed El Khader</p>
+          </div>
         </div>
       </div>
     </footer>

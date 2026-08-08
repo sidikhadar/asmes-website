@@ -7,8 +7,7 @@ import { Reveal } from '@/components/reveal'
 
 /**
  * Partner list — names are proper nouns kept identical across locales.
- * Logos live in /public/partners and are shown grayscale at rest, full
- * colour on hover/focus.
+ * Logos live in /public/partners and are shown in full colour.
  */
 const PARTNERS = [
   { name: 'Coopération allemande (GIZ)', src: '/partners/giz.jpeg' },
@@ -20,6 +19,7 @@ const PARTNERS = [
   { name: 'Réseau des Femmes Leaders Maghrébines (RFLM)', src: '/partners/rflm.jpeg' },
   { name: 'Oman Charitable Organization', src: '/partners/oman-charitable.jpeg' },
   { name: 'Kuwait is by your side', src: '/partners/kuwait.jpeg' },
+  { name: 'Chine', src: '/partners/china.jpeg' },
 ] as const
 
 export function Partners() {
@@ -41,7 +41,7 @@ export function Partners() {
                     alt={partner.name}
                     fill
                     sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 320px"
-                    className="object-contain opacity-70 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                    className="object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               </div>
