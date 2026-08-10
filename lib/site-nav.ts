@@ -9,6 +9,7 @@
 export type NavId =
   | 'accueil'
   | 'qui-sommes-nous'
+  | 'reconnaissance'
   | 'mission'
   | 'vision'
   | 'objectifs'
@@ -23,6 +24,7 @@ export type NavItem = {
 export const NAV_ITEMS: NavItem[] = [
   { id: 'accueil' },
   { id: 'qui-sommes-nous' },
+  { id: 'reconnaissance' },
   { id: 'mission' },
   { id: 'vision' },
   { id: 'objectifs' },

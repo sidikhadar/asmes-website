@@ -10,6 +10,8 @@ type RevealProps = {
   className?: string
   /** Render as a list item when used inside a <ul>. */
   as?: 'div' | 'li'
+  /** Optional anchor id, e.g. for in-page navigation targets. */
+  id?: string
 }
 
 /**
@@ -17,17 +19,22 @@ type RevealProps = {
  * first time they enter the viewport. Fully static when the visitor prefers
  * reduced motion, so it never blocks or distracts.
  */
-export function Reveal({ children, delay = 0, className, as = 'div' }: RevealProps) {
+export function Reveal({ children, delay = 0, className, as = 'div', id }: RevealProps) {
   const reduce = useReducedMotion()
   const MotionTag = as === 'li' ? motion.li : motion.div
 
   if (reduce) {
     const Tag = as
-    return <Tag className={className}>{children}</Tag>
+    return (
+      <Tag id={id} className={className}>
+        {children}
+      </Tag>
+    )
   }
 
   return (
     <MotionTag
+      id={id}
       className={className}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}

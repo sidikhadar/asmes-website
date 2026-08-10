@@ -34,7 +34,14 @@ export const SDG_NUMBERS = [1, 2, 3, 4, 5, 6, 8, 10, 13, 14, 15, 16, 17] as cons
 export type Dictionary = {
   brand: { tagline: string }
   nav: Record<
-    'accueil' | 'qui-sommes-nous' | 'mission' | 'vision' | 'objectifs' | 'partenaires' | 'contact',
+    | 'accueil'
+    | 'qui-sommes-nous'
+    | 'reconnaissance'
+    | 'mission'
+    | 'vision'
+    | 'objectifs'
+    | 'partenaires'
+    | 'contact',
     string
   >
   hero: {
@@ -80,6 +87,10 @@ export type Dictionary = {
       emailLabel: string
       facebookLabel: string
       facebookvalue: string
+      whatsappLabel: string
+      whatsappValue: string
+      recepisseLabel: string
+      recepisseValue: string
     }
   }
   footer: { rights: string; developedBy: string; followUs: string }
@@ -101,6 +112,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
     nav: {
       accueil: 'Accueil',
       'qui-sommes-nous': 'Qui sommes-nous',
+      reconnaissance: 'Reconnaissance',
       mission: 'Notre mission',
       vision: 'Notre vision',
       objectifs: 'Nos objectifs',
@@ -255,6 +267,10 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         emailLabel: 'Email',
         facebookLabel: 'Facebook',
         facebookvalue: 'facebook.com/ongasmerim',
+        whatsappLabel: 'WhatsApp',
+        whatsappValue: '+34 637 18 48 31',
+        recepisseLabel: "Récépissé de l'ONG",
+        recepisseValue: 'FA 010000330208202202937',
       },
     },
     footer: {
@@ -278,6 +294,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
     nav: {
       accueil: 'الرئيسية',
       'qui-sommes-nous': 'من نحن',
+      reconnaissance: 'اعتراف',
       mission: 'مهمتنا',
       vision: 'رؤيتنا',
       objectifs: 'أهدافنا',
@@ -314,8 +331,8 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           title: 'اعتراف مؤسسي',
           paragraphs: [
             'إن جمعية إنقاذ الوسط البيئي والاجتماعي (ASMES) ممثَّلة من خلال أمينتها العامة في المجلس الاقتصادي والاجتماعي والبيئي، بصفتها ممثلة للمجتمع المدني في المسائل المتعلقة بحماية الحياة البرية والتنوع البيولوجي.',
-            'يشكّل هذا التمثيل أيضاً اعترافاً بمكانة ASMES ومساهمتها في مشهد منظمات المجتمع المدني، وكذلك بالثقة الممنوحة لخبرتها والتزامها من قبل الوزارة الوصية وشركائها من المجتمع المدني.',
-            'تؤكد ASMES من خلال هذه المسؤولية التزامها بالمساهمة في الجهود الوطنية من أجل حماية البيئة والتنوع البيولوجي والتنمية المستدامة.',
+            'يشكّل هذا التمثيل أيضاً اعترافاً بمكانة ASMES ومساهمتها في مشهد منظمات المجت��ع المدني، وكذلك بالثقة الممنوحة لخبرتها والتزامها من قبل الوزارة الوصية وشركائها من المجتمع المدني.',
+            'تؤكد ASMES من ��لال هذه المسؤولية التزامها بالمساهمة في الجهود الوطنية من أجل حماية البيئة والتنوع البيولوجي والتنمية المستدامة.',
           ],
         },
       },
@@ -431,6 +448,10 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         emailLabel: 'البريد الإلكتروني',
         facebookLabel: 'فيسبوك',
         facebookvalue: 'facebook.com/ongasmerim',
+        whatsappLabel: 'واتساب',
+        whatsappValue: '+34 637 18 48 31',
+        recepisseLabel: 'وصل تسجيل المنظمة',
+        recepisseValue: 'FA 010000330208202202937',
       },
     },
     footer: {
@@ -454,6 +475,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
     nav: {
       accueil: 'Home',
       'qui-sommes-nous': 'About us',
+      reconnaissance: 'Recognition',
       mission: 'Our mission',
       vision: 'Our vision',
       objectifs: 'Our objectives',
@@ -608,6 +630,10 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         emailLabel: 'Email',
         facebookLabel: 'Facebook',
         facebookvalue: 'facebook.com/ongasmerim',
+        whatsappLabel: 'WhatsApp',
+        whatsappValue: '+34 637 18 48 31',
+        recepisseLabel: 'NGO registration',
+        recepisseValue: 'FA 010000330208202202937',
       },
     },
     footer: {

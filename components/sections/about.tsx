@@ -55,7 +55,7 @@ export function About() {
         </div>
 
         {/* Institutional recognition — representation at the CESE */}
-        <Reveal className="mt-12">
+        <Reveal className="mt-12 scroll-mt-24" id="reconnaissance">
           <div className="overflow-hidden rounded-2xl border border-brand/15 border-s-4 border-s-brand bg-gradient-to-br from-accent to-background p-6 shadow-sm sm:p-8">
             <h3 className="font-heading text-xl font-bold text-brand-dark sm:text-2xl">
               {s.recognition.title}

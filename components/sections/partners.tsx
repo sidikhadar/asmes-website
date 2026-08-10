@@ -10,17 +10,21 @@ import { Reveal } from '@/components/reveal'
  * Logos live in /public/partners and are shown in full colour.
  */
 const PARTNERS = [
+  // 1. Mauritania
   { name: 'République Islamique de Mauritanie', src: '/mauritania-emblem.jpeg' },
-  { name: 'Coopération allemande (GIZ)', src: '/partners/giz.jpeg' },
-  { name: 'RIMRAP / IRAM / Union Européenne', src: '/partners/rimrap-copco.jpeg' },
+  // 2. Arab partners
   { name: 'UAE AID', src: '/partners/uae-aid.jpeg' },
+  { name: 'Kuwait is by your side', src: '/partners/kuwait.jpeg' },
+  { name: 'Oman Charitable Organization', src: '/partners/oman-charitable.jpeg' },
+  // 3. China
+  { name: 'Chine', src: '/partners/china.jpeg' },
+  // 4. Others (alphabetical)
+  { name: 'ANYL4PSD', src: '/partners/anyl4psd.jpeg' },
+  { name: 'Coopération allemande (GIZ)', src: '/partners/giz.jpeg' },
   { name: 'Member of GNDR', src: '/partners/gndr.jpeg' },
   { name: 'Partenariat Union Européenne - Mauritanie', src: '/partners/eu-mauritanie.jpeg' },
-  { name: 'ANYL4PSD', src: '/partners/anyl4psd.jpeg' },
   { name: 'Réseau des Femmes Leaders Maghrébines (RFLM)', src: '/partners/rflm.jpeg' },
-  { name: 'Oman Charitable Organization', src: '/partners/oman-charitable.jpeg' },
-  { name: 'Kuwait is by your side', src: '/partners/kuwait.jpeg' },
-  { name: 'Chine', src: '/partners/china.jpeg' },
+  { name: 'RIMRAP / IRAM / Union Européenne', src: '/partners/rimrap-copco.jpeg' },
 ] as const
 
 export function Partners() {
