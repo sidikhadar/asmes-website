@@ -289,7 +289,14 @@ export function SiteHeader() {
               <span className="relative size-9 overflow-hidden rounded-full ring-1 ring-border">
                 <Image src="/asmes-logo.jpeg" alt="" fill sizes="36px" className="object-cover" />
               </span>
-              <span className="font-heading text-base font-extrabold text-brand-dark">ASMES</span>
+              <span className="flex flex-col leading-tight">
+                <span className="font-heading text-base font-extrabold text-brand-dark">
+                  ASMES
+                </span>
+                <span className="text-[10px] font-medium text-muted-foreground">
+                  {t.brand.tagline}
+                </span>
+              </span>
             </div>
             <button
               type="button"
