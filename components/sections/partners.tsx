@@ -10,6 +10,7 @@ import { Reveal } from '@/components/reveal'
  * Logos live in /public/partners and are shown in full colour.
  */
 const PARTNERS = [
+  { name: 'République Islamique de Mauritanie', src: '/mauritania-emblem.jpeg' },
   { name: 'Coopération allemande (GIZ)', src: '/partners/giz.jpeg' },
   { name: 'RIMRAP / IRAM / Union Européenne', src: '/partners/rimrap-copco.jpeg' },
   { name: 'UAE AID', src: '/partners/uae-aid.jpeg' },
