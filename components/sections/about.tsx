@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { CalendarCheck } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/sections/section-heading'
@@ -53,6 +54,37 @@ export function About() {
             </div>
           </Reveal>
         </div>
+
+        {/* Institutional recognition — representation at the CESE */}
+        <Reveal className="mt-12">
+          <div className="overflow-hidden rounded-2xl border border-brand/15 border-s-4 border-s-brand bg-gradient-to-br from-accent to-background shadow-sm">
+            <div className="flex flex-col gap-6 p-6 sm:p-8 md:flex-row md:items-start md:gap-8">
+              <div className="flex items-center gap-4 md:flex-col md:items-start">
+                <span className="relative size-20 shrink-0 overflow-hidden rounded-full ring-1 ring-brand/20 sm:size-24">
+                  <Image
+                    src="/mauritania-emblem.jpeg"
+                    alt="Emblème de la République Islamique de Mauritanie"
+                    fill
+                    sizes="96px"
+                    className="object-contain p-1"
+                  />
+                </span>
+              </div>
+              <div className="flex-1">
+                <h3 className="font-heading text-xl font-bold text-brand-dark sm:text-2xl">
+                  {s.recognition.title}
+                </h3>
+                <div className="mt-4 space-y-4">
+                  {s.recognition.paragraphs.map((p, i) => (
+                    <p key={i} className="text-pretty leading-relaxed text-muted-foreground">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

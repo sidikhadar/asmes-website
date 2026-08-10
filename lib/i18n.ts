@@ -53,6 +53,7 @@ export type Dictionary = {
       lead: string
       paragraphs: string[]
       facts: string[]
+      recognition: { title: string; paragraphs: string[] }
     }
     mission: { eyebrow: string; title: string; intro: string; items: string[] }
     vision: { eyebrow: string; title: string; paragraphs: string[] }
@@ -132,6 +133,14 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'À but non lucratif',
           'Approche participative',
         ],
+        recognition: {
+          title: 'Une reconnaissance institutionnelle',
+          paragraphs: [
+            "L'Association Sauvetage du Milieu Environnemental et Social (ASMES) est représentée par sa Secrétaire Générale au sein du Conseil Économique, Social et Environnemental, en qualité de représentante de la société civile pour les questions relatives à la protection de la faune et de la biodiversité.",
+            "Cette représentation constitue également une reconnaissance de la place et de la contribution d'ASMES dans le paysage des organisations de la société civile, ainsi que de la confiance accordée à son expertise et à son engagement par le ministère de tutelle et ses partenaires de la société civile.",
+            "ASMES réaffirme, à travers cette responsabilité, son engagement à contribuer aux efforts nationaux en faveur de la protection de l'environnement, de la biodiversité et du développement durable.",
+          ],
+        },
       },
       mission: {
         eyebrow: 'Notre engagement',
@@ -301,6 +310,14 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'لا تهدف إلى الربح',
           'مقاربة تشاركية',
         ],
+        recognition: {
+          title: 'اعتراف مؤسسي',
+          paragraphs: [
+            'إن جمعية إنقاذ الوسط البيئي والاجتماعي (ASMES) ممثَّلة من خلال أمينتها العامة في المجلس الاقتصادي والاجتماعي والبيئي، بصفتها ممثلة للمجتمع المدني في المسائل المتعلقة بحماية الحياة البرية والتنوع البيولوجي.',
+            'يشكّل هذا التمثيل أيضاً اعترافاً بمكانة ASMES ومساهمتها في مشهد منظمات المجتمع المدني، وكذلك بالثقة الممنوحة لخبرتها والتزامها من قبل الوزارة الوصية وشركائها من المجتمع المدني.',
+            'تؤكد ASMES من خلال هذه المسؤولية التزامها بالمساهمة في الجهود الوطنية من أجل حماية البيئة والتنوع البيولوجي والتنمية المستدامة.',
+          ],
+        },
       },
       mission: {
         eyebrow: 'التزامنا',
@@ -469,6 +486,14 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'Non-profit',
           'Participatory approach',
         ],
+        recognition: {
+          title: 'Institutional recognition',
+          paragraphs: [
+            'The Association for the Safeguarding of the Environmental and Social Milieu (ASMES) is represented by its Secretary General on the Economic, Social and Environmental Council, as a representative of civil society on matters relating to the protection of wildlife and biodiversity.',
+            "This representation also constitutes recognition of ASMES's standing and contribution within the landscape of civil society organizations, as well as the trust placed in its expertise and commitment by the supervising ministry and its civil society partners.",
+            'Through this responsibility, ASMES reaffirms its commitment to contributing to national efforts for the protection of the environment, biodiversity and sustainable development.',
+          ],
+        },
       },
       mission: {
         eyebrow: 'Our commitment',
