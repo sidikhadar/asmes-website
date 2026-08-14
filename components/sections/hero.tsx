@@ -19,11 +19,27 @@ export function Hero() {
       id="accueil"
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-20"
     >
-      {/* Layered brand background */}
+      {/* Video background with brand overlay for text legibility */}
       <div aria-hidden className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.97_0.02_130)] via-background to-[oklch(0.95_0.03_128)]" />
-        <div className="absolute -right-40 -top-40 size-[36rem] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.62_0.12_132/0.14),transparent_70%)]" />
-        <div className="absolute -bottom-48 -left-40 size-[40rem] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.53_0.11_135/0.12),transparent_70%)]" />
+        <video
+          className="size-full object-cover motion-reduce:hidden"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/hero-poster.jpg"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Poster fallback shown when motion is reduced */}
+        <div
+          className="absolute inset-0 hidden bg-cover bg-center motion-reduce:block"
+          style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
+        />
+        {/* Readability overlays: soft brand tint + light veil */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/55 via-brand-dark/35 to-brand/45" />
+        <div className="absolute inset-0 bg-background/35" />
       </div>
 
       <div className="mx-auto w-full max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
