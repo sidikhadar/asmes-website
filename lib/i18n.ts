@@ -485,7 +485,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
     hero: {
       badge: 'Mauritanian NGO',
       titleLead: 'Association for the Safeguarding of the',
-      titleHighlight: 'Environmental and Social Milieu',
+      titleHighlight: 'Environmental and Social Sphere',
       subtitle:
         'Working to protect the environment and advance social development, in service of Mauritanian communities and future generations.',
       ctaContact: 'Contact us',
