@@ -37,9 +37,9 @@ export function Hero() {
           className="absolute inset-0 hidden bg-cover bg-center motion-reduce:block"
           style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
         />
-        {/* Readability overlays: soft brand tint + light veil */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/55 via-brand-dark/35 to-brand/45" />
-        <div className="absolute inset-0 bg-background/35" />
+        {/* Readability overlays: brand tint + darkening veil + vertical anchor */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/80 via-brand-dark/65 to-brand/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-brand-dark/40" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
@@ -61,14 +61,12 @@ export function Hero() {
           {t.hero.badge}
         </span>
 
-        <h1 className="animate-in fade-in slide-in-from-bottom-4 delay-150 duration-700 mt-6 text-balance font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        <h1 className="animate-in fade-in slide-in-from-bottom-4 delay-150 duration-700 mt-6 text-balance font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
           {t.hero.titleLead}{' '}
-          <span className="bg-gradient-to-r from-brand to-brand-dark bg-clip-text text-transparent">
-            {t.hero.titleHighlight}
-          </span>
+          <span className="text-[oklch(0.9_0.13_135)]">{t.hero.titleHighlight}</span>
         </h1>
 
-        <p className="animate-in fade-in slide-in-from-bottom-4 delay-200 duration-700 mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="animate-in fade-in slide-in-from-bottom-4 delay-200 duration-700 mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-white/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.4)] sm:text-lg">
           {t.hero.subtitle}
         </p>
 
