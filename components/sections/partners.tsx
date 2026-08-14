@@ -25,8 +25,6 @@ const PARTNERS = [
   { name: 'Partenariat Union Européenne - Mauritanie', src: '/partners/eu-mauritanie.jpeg' },
   { name: 'Réseau des Femmes Leaders Maghrébines (RFLM)', src: '/partners/rflm.jpeg' },
   { name: 'RIMRAP / IRAM / Union Européenne', src: '/partners/rimrap-copco.jpeg' },
-  // Technical partner — logo has heavy internal padding, so scale it up to match visual weight
-  { name: 'Hybrids Tech', src: '/partners/hybrids-tech.jpeg', zoom: true },
 ] as const
 
 export function Partners() {
