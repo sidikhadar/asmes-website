@@ -20,7 +20,7 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-20"
     >
       {/* Video background with brand overlay for text legibility */}
-      <div aria-hidden className="absolute inset-0 -z-10">
+      <div aria-hidden className="absolute inset-0 z-0">
         <video
           className="size-full object-cover motion-reduce:hidden"
           autoPlay
@@ -42,7 +42,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-background/35" />
       </div>
 
-      <div className="mx-auto w-full max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
           <span className="relative mx-auto mb-8 block size-28 overflow-hidden rounded-full shadow-xl ring-4 ring-background sm:size-36">
             <Image
@@ -96,7 +96,7 @@ export function Hero() {
         type="button"
         onClick={() => scrollToId('qui-sommes-nous')}
         aria-label={t.hero.scroll}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted-foreground transition-colors hover:text-brand-dark motion-safe:animate-bounce sm:block"
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 text-muted-foreground transition-colors hover:text-brand-dark motion-safe:animate-bounce sm:block"
       >
         <ChevronDown className="size-6" />
       </button>
