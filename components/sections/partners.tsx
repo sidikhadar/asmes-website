@@ -25,8 +25,8 @@ const PARTNERS = [
   { name: 'Partenariat Union Européenne - Mauritanie', src: '/partners/eu-mauritanie.jpeg' },
   { name: 'Réseau des Femmes Leaders Maghrébines (RFLM)', src: '/partners/rflm.jpeg' },
   { name: 'RIMRAP / IRAM / Union Européenne', src: '/partners/rimrap-copco.jpeg' },
-  // Technical partner
-  { name: 'Hybrids Tech', src: '/partners/hybrids-tech.jpeg' },
+  // Technical partner — logo has heavy internal padding, so scale it up to match visual weight
+  { name: 'Hybrids Tech', src: '/partners/hybrids-tech.jpeg', zoom: true },
 ] as const
 
 export function Partners() {
@@ -48,7 +48,11 @@ export function Partners() {
                     alt={partner.name}
                     fill
                     sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 320px"
-                    className="object-contain transition-transform duration-300 group-hover:scale-105"
+                    className={
+                      'zoom' in partner && partner.zoom
+                        ? 'scale-[1.5] object-contain transition-transform duration-300 group-hover:scale-[1.6]'
+                        : 'object-contain transition-transform duration-300 group-hover:scale-105'
+                    }
                   />
                 </div>
               </div>
