@@ -19,14 +19,30 @@ export function Hero() {
       id="accueil"
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-20"
     >
-      {/* Layered brand background */}
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.97_0.02_130)] via-background to-[oklch(0.95_0.03_128)]" />
-        <div className="absolute -right-40 -top-40 size-[36rem] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.62_0.12_132/0.14),transparent_70%)]" />
-        <div className="absolute -bottom-48 -left-40 size-[40rem] rounded-full bg-[radial-gradient(circle_at_center,oklch(0.53_0.11_135/0.12),transparent_70%)]" />
+      {/* Video background with brand overlay for text legibility */}
+      <div aria-hidden className="absolute inset-0 z-0">
+        <video
+          className="size-full object-cover motion-reduce:hidden"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/hero-poster.jpg"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Poster fallback shown when motion is reduced */}
+        <div
+          className="absolute inset-0 hidden bg-cover bg-center motion-reduce:block"
+          style={{ backgroundImage: 'url(/hero-poster.jpg)' }}
+        />
+        {/* Readability overlays: brand tint + darkening veil + vertical anchor */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/80 via-brand-dark/65 to-brand/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-brand-dark/40" />
       </div>
 
-      <div className="mx-auto w-full max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
           <span className="relative mx-auto mb-8 block size-28 overflow-hidden rounded-full shadow-xl ring-4 ring-background sm:size-36">
             <Image
@@ -45,14 +61,12 @@ export function Hero() {
           {t.hero.badge}
         </span>
 
-        <h1 className="animate-in fade-in slide-in-from-bottom-4 delay-150 duration-700 mt-6 text-balance font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        <h1 className="animate-in fade-in slide-in-from-bottom-4 delay-150 duration-700 mt-6 text-balance font-heading text-3xl font-extrabold leading-[1.1] tracking-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
           {t.hero.titleLead}{' '}
-          <span className="bg-gradient-to-r from-brand to-brand-dark bg-clip-text text-transparent">
-            {t.hero.titleHighlight}
-          </span>
+          <span className="text-[oklch(0.9_0.13_135)]">{t.hero.titleHighlight}</span>
         </h1>
 
-        <p className="animate-in fade-in slide-in-from-bottom-4 delay-200 duration-700 mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="animate-in fade-in slide-in-from-bottom-4 delay-200 duration-700 mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-white/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.4)] sm:text-lg">
           {t.hero.subtitle}
         </p>
 
@@ -80,7 +94,7 @@ export function Hero() {
         type="button"
         onClick={() => scrollToId('qui-sommes-nous')}
         aria-label={t.hero.scroll}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted-foreground transition-colors hover:text-brand-dark motion-safe:animate-bounce sm:block"
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 text-muted-foreground transition-colors hover:text-brand-dark motion-safe:animate-bounce sm:block"
       >
         <ChevronDown className="size-6" />
       </button>
