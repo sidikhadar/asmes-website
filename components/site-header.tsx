@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 import { ChevronDown, Globe, Menu, X } from 'lucide-react'
 import { NAV_ITEMS } from '@/lib/site-nav'
 import { useLanguage } from '@/components/language-provider'
-import { LANGUAGE_LABELS, LOCALES } from '@/lib/i18n'
+import { LANGUAGE_LABELS, LANGUAGE_SHORT, LOCALES } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
 export function SiteHeader() {
@@ -199,8 +199,8 @@ export function SiteHeader() {
               aria-haspopup="menu"
               aria-expanded={langOpen}
             >
+              <span className="font-semibold tabular-nums">{LANGUAGE_SHORT[locale]}</span>
               <Globe className="size-5" />
-              <span className="hidden sm:inline">{LANGUAGE_LABELS[locale]}</span>
               <ChevronDown
                 className={cn('size-4 transition-transform', langOpen && 'rotate-180')}
               />
