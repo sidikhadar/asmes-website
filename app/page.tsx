@@ -6,6 +6,7 @@ import { Mission } from '@/components/sections/mission'
 import { Vision } from '@/components/sections/vision'
 import { Objectives } from '@/components/sections/objectives'
 import { Sdg } from '@/components/sections/sdg'
+import { Gallery } from '@/components/sections/gallery'
 import { Partners } from '@/components/sections/partners'
 import { Contact } from '@/components/sections/contact'
 import { SiteFooter } from '@/components/site-footer'
@@ -23,6 +24,7 @@ export default function Page() {
         <Vision />
         <Objectives />
         <Sdg />
+        <Gallery />
         <Partners />
         <Contact />
       </main>

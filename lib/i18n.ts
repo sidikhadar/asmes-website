@@ -7,6 +7,8 @@
  * section components fully data-driven.
  */
 
+import type { GalleryCategoryKey } from '@/lib/gallery'
+
 export const LOCALES = ['fr', 'en', 'ar'] as const
 export type Locale = (typeof LOCALES)[number]
 
@@ -40,6 +42,7 @@ export type Dictionary = {
     | 'mission'
     | 'vision'
     | 'objectifs'
+    | 'galerie'
     | 'partenaires'
     | 'contact',
     string
@@ -76,6 +79,12 @@ export type Dictionary = {
       intro: string
       conclusion: string
       goals: string[]
+    }
+    galerie: {
+      eyebrow: string
+      title: string
+      intro: string
+      categories: Record<GalleryCategoryKey, string>
     }
     partenaires: { eyebrow: string; title: string; intro: string }
     contact: {
@@ -116,6 +125,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
       mission: 'Notre mission',
       vision: 'Notre vision',
       objectifs: 'Nos objectifs',
+      galerie: 'Galerie',
       partenaires: 'Nos partenaires',
       contact: 'Contact',
     },
@@ -250,6 +260,23 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'Partenariats pour la réalisation des objectifs',
         ],
       },
+      galerie: {
+        eyebrow: 'Nos actions sur le terrain',
+        title: 'Galerie',
+        intro:
+          "Retour en images sur les actions de terrain de l'ASMES : accès à l'eau, aide humanitaire, sensibilisation, plaidoyer international et valorisation des ressources locales.",
+        categories: {
+          puits: 'Construction de puits',
+          distributions: 'Distributions humanitaires',
+          inondations: 'Réponse aux inondations',
+          sensibilisation: 'Maraudes & sensibilisation',
+          forums: 'Forums & conférences internationales',
+          partenariats: 'Partenariats & signatures officielles',
+          reseaux: 'Réseaux de femmes leaders',
+          environnement: 'Actions environnementales',
+          moringa: 'Valorisation des produits locaux (Moringa)',
+        },
+      },
       partenaires: {
         eyebrow: 'Ils nous soutiennent',
         title: 'Nos partenaires',
@@ -298,6 +325,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
       mission: 'مهمتنا',
       vision: 'رؤيتنا',
       objectifs: 'أهدافنا',
+      galerie: 'معرض الصور',
       partenaires: 'شركاؤنا',
       contact: 'اتصل بنا',
     },
@@ -432,6 +460,23 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'عقد الشراكات لتحقيق الأهداف',
         ],
       },
+      galerie: {
+        eyebrow: 'أعمالنا في الميدان',
+        title: 'معرض الصور',
+        intro:
+          'جولة مصوّرة في أعمال جمعية ASMES الميدانية: الوصول إلى الماء، والمساعدات الإنسانية، والتوعية، والمناصرة الدولية، وتثمين الموارد المحلية.',
+        categories: {
+          puits: 'حفر الآبار',
+          distributions: 'التوزيعات الإنسانية',
+          inondations: 'الاستجابة للفيضانات',
+          sensibilisation: 'الجولات الميدانية والتوعية',
+          forums: 'المنتديات والمؤتمرات الدولية',
+          partenariats: 'الشراكات والتوقيعات الرسمية',
+          reseaux: 'شبكات النساء القياديات',
+          environnement: 'الأنشطة البيئية',
+          moringa: 'تثمين المنتجات المحلية (المورينغا)',
+        },
+      },
       partenaires: {
         eyebrow: 'يدعموننا',
         title: 'شركاؤنا',
@@ -479,6 +524,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
       mission: 'Our mission',
       vision: 'Our vision',
       objectifs: 'Our objectives',
+      galerie: 'Gallery',
       partenaires: 'Our partners',
       contact: 'Contact',
     },
@@ -612,6 +658,23 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
           'Peace, justice and strong institutions',
           'Partnerships for the goals',
         ],
+      },
+      galerie: {
+        eyebrow: 'Our actions in the field',
+        title: 'Gallery',
+        intro:
+          "A look back in pictures at ASMES's fieldwork: access to water, humanitarian aid, awareness-raising, international advocacy and promotion of local resources.",
+        categories: {
+          puits: 'Well construction',
+          distributions: 'Humanitarian distributions',
+          inondations: 'Flood response',
+          sensibilisation: 'Outreach & awareness',
+          forums: 'International forums & conferences',
+          partenariats: 'Partnerships & official signings',
+          reseaux: "Women leaders' networks",
+          environnement: 'Environmental actions',
+          moringa: 'Promoting local products (Moringa)',
+        },
       },
       partenaires: {
         eyebrow: 'They support us',
