@@ -345,8 +345,8 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         title: 'من نحن',
         lead: 'جمعية إنقاذ الوسط البيئي والاجتماعي (ASMES) هي منظمة غير حكومية موريتانية، غير سياسية ولا تهدف إلى الربح، تأسست في 24 نوفمبر 2015 على يد مجموعة من الأطر المنحدرين من مختلف ولايات موريتانيا.',
         paragraphs: [
-          'تعمل ASMES على المساهمة في التنمية المستدامة والشاملة والعادلة لموريتانيا، في إطار تحقيق أهداف التنمية المستدامة.',
-          'من خلال تدخلاتها، تواكب الجمعية السكان والمجتمعات في عدة مجالات: مكافحة الفقر، وتمكين المرأة، والتدريب، والوصول إلى الماء، والتنمية المحلية، والأمن الغذائي، وحماية الحقوق، والصحة، والبيئة، والتكيف مع تغير المناخ.',
+          'تعمل ASMES على المساهمة في التنمية ا��مستدامة والشاملة والعادلة لموريتانيا، في إطار تحقيق أهداف التنمية المستدامة.',
+          'من خلال تدخلاتها، تواكب الجمعية السكان ��المجتمعات في عدة مجالات: مكافحة الفقر، وتمكين المرأة، والتدريب، والوصول إلى الماء، والتنمية المحلية، والأمن الغذائي، وحماية الحقوق، والصحة، والبيئة، والتكيف مع تغير المناخ.',
           'تعتمد ASMES مقاربة تشاركية تضع المجتمعات في صميم تحديد وتنفيذ ومتابعة أعمال التنمية.',
         ],
         facts: [
@@ -516,7 +516,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
     },
   },
   en: {
-    brand: { tagline: 'Environmental & Social Milieu' },
+    brand: { tagline: 'Environmental & Social Sphere' },
     nav: {
       accueil: 'Home',
       'qui-sommes-nous': 'About us',
@@ -542,7 +542,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
       'qui-sommes-nous': {
         eyebrow: 'About',
         title: 'About us',
-        lead: 'The Association for the Safeguarding of the Environmental and Social Milieu (ASMES) is a Mauritanian non-governmental organization, non-political and non-profit, founded on 24 November 2015 by a group of professionals from various wilayas (regions) of Mauritania.',
+        lead: 'The Association for the Safeguarding of the Environmental and Social Sphere (ASMES) is a Mauritanian non-governmental organization, non-political and non-profit, founded on 24 November 2015 by a group of professionals from various wilayas (regions) of Mauritania.',
         paragraphs: [
           'ASMES works to contribute to the sustainable, inclusive and equitable development of Mauritania, as part of achieving the Sustainable Development Goals (SDGs).',
           "Through its interventions, the association supports populations and communities across several areas: the fight against poverty, women's empowerment, training, access to water, local development, food security, protection of rights, health, the environment and adaptation to climate change.",
@@ -557,7 +557,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         recognition: {
           title: 'Institutional recognition',
           paragraphs: [
-            'The Association for the Safeguarding of the Environmental and Social Milieu (ASMES) is represented by its Secretary General on the Economic, Social and Environmental Council, as a representative of civil society on matters relating to the protection of wildlife and biodiversity.',
+            'The Association for the Safeguarding of the Environmental and Social Sphere (ASMES) is represented by its Secretary General on the Economic, Social and Environmental Council, as a representative of civil society on matters relating to the protection of wildlife and biodiversity.',
             "This representation also constitutes recognition of ASMES's standing and contribution within the landscape of civil society organizations, as well as the trust placed in its expertise and commitment by the supervising ministry and its civil society partners.",
             'Through this responsibility, ASMES reaffirms its commitment to contributing to national efforts for the protection of the environment, biodiversity and sustainable development.',
           ],
