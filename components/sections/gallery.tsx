@@ -23,16 +23,10 @@ export function Gallery() {
         <div className="mt-14 flex flex-col gap-14">
           {GALLERY.map((category, i) => (
             <Reveal key={category.key} delay={i * 0.5}>
-              <div>
-                <h3 className="mb-5 flex items-center gap-2 font-heading text-xl font-bold text-foreground sm:text-2xl">
-                  <span className="h-5 w-1 rounded-full bg-clay" aria-hidden />
-                  {s.categories[category.key]}
-                </h3>
-                <GalleryCarousel
-                  title={s.categories[category.key]}
-                  images={category.images}
-                />
-              </div>
+              <GalleryCarousel
+                title={s.categories[category.key]}
+                images={category.images}
+              />
             </Reveal>
           ))}
         </div>
