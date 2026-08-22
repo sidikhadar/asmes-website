@@ -7,31 +7,14 @@
  * truth. Photos live under /public/gallery/<key>/<key>-NN.jpg.
  */
 
-export const GALLERY_CATEGORY_KEYS = [
-  'puits',
-  'distributions',
-  'inondations',
-  'sensibilisation',
-  'forums',
-  'partenariats',
-  'reseaux',
-  'environnement',
-  'moringa',
-] as const
+export const GALLERY_CATEGORY_KEYS = ['terrain', 'institution'] as const
 
 export type GalleryCategoryKey = (typeof GALLERY_CATEGORY_KEYS)[number]
 
 /** Number of photos available per category (files are 1-indexed, zero-padded). */
 const IMAGE_COUNTS: Record<GalleryCategoryKey, number> = {
-  puits: 14,
-  distributions: 15,
-  inondations: 6,
-  sensibilisation: 6,
-  forums: 10,
-  partenariats: 2,
-  reseaux: 2,
-  environnement: 5,
-  moringa: 1,
+  terrain: 17,
+  institution: 5,
 }
 
 export type GalleryCategory = {

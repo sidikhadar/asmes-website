@@ -266,15 +266,8 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         intro:
           "Retour en images sur les actions de terrain de l'ASMES : accès à l'eau, aide humanitaire, sensibilisation, plaidoyer international et valorisation des ressources locales.",
         categories: {
-          puits: 'Construction de puits',
-          distributions: 'Distributions humanitaires',
-          inondations: 'Réponse aux inondations',
-          sensibilisation: 'Maraudes & sensibilisation',
-          forums: 'Forums & conférences internationales',
-          partenariats: 'Partenariats & signatures officielles',
-          reseaux: 'Réseaux de femmes leaders',
-          environnement: 'Actions environnementales',
-          moringa: 'Valorisation des produits locaux (Moringa)',
+          terrain: 'Actions sur le terrain',
+          institution: 'Partenariats & plaidoyer',
         },
       },
       partenaires: {
@@ -345,7 +338,7 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         title: 'من نحن',
         lead: 'جمعية إنقاذ الوسط البيئي والاجتماعي (ASMES) هي منظمة غير حكومية موريتانية، غير سياسية ولا تهدف إلى الربح، تأسست في 24 نوفمبر 2015 على يد مجموعة من الأطر المنحدرين من مختلف ولايات موريتانيا.',
         paragraphs: [
-          'تعمل ASMES على المساهمة في التنمية ا��مستدامة والشاملة والعادلة لموريتانيا، في إطار تحقيق أهداف التنمية المستدامة.',
+          'تعمل ASMES على المساهمة في التنمية ا����مستدامة والشاملة والعادلة لموريتانيا، في إطار تحقيق أهداف التنمية المستدامة.',
           'من خلال تدخلاتها، تواكب الجمعية السكان ��المجتمعات في عدة مجالات: مكافحة الفقر، وتمكين المرأة، والتدريب، والوصول إلى الماء، والتنمية المحلية، والأمن الغذائي، وحماية الحقوق، والصحة، والبيئة، والتكيف مع تغير المناخ.',
           'تعتمد ASMES مقاربة تشاركية تضع المجتمعات في صميم تحديد وتنفيذ ومتابعة أعمال التنمية.',
         ],
@@ -466,15 +459,8 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         intro:
           'جولة مصوّرة في أعمال جمعية ASMES الميدانية: الوصول إلى الماء، والمساعدات الإنسانية، والتوعية، والمناصرة الدولية، وتثمين الموارد المحلية.',
         categories: {
-          puits: 'حفر الآبار',
-          distributions: 'التوزيعات الإنسانية',
-          inondations: 'الاستجابة للفيضانات',
-          sensibilisation: 'الجولات الميدانية والتوعية',
-          forums: 'المنتديات والمؤتمرات الدولية',
-          partenariats: 'الشراكات والتوقيعات الرسمية',
-          reseaux: 'شبكات النساء القياديات',
-          environnement: 'الأنشطة البيئية',
-          moringa: 'تثمين المنتجات المحلية (المورينغا)',
+          terrain: 'الأنشطة الميدانية',
+          institution: 'الشراكات والمناصرة',
         },
       },
       partenaires: {
@@ -665,15 +651,8 @@ export const DICTIONARIES: Record<Locale, Dictionary> = {
         intro:
           "A look back in pictures at ASMES's fieldwork: access to water, humanitarian aid, awareness-raising, international advocacy and promotion of local resources.",
         categories: {
-          puits: 'Well construction',
-          distributions: 'Humanitarian distributions',
-          inondations: 'Flood response',
-          sensibilisation: 'Outreach & awareness',
-          forums: 'International forums & conferences',
-          partenariats: 'Partnerships & official signings',
-          reseaux: "Women leaders' networks",
-          environnement: 'Environmental actions',
-          moringa: 'Promoting local products (Moringa)',
+          terrain: 'Fieldwork',
+          institution: 'Partnerships & advocacy',
         },
       },
       partenaires: {
